@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+. hadoop-home.sh
+shift
+$HADOOP_HDFS_HOME/bin/hdfs $@

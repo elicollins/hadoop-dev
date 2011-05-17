@@ -1,0 +1,33 @@
+
+Scripts and aliases for Hadoop development.
+
+Add something like the following to your bashrc to use them:
+
+export HDEV=/home/eli/src/play/hadoop-dev
+. $HDEV/bin/hadoop-alias.sh
+export PATH=$HDEV/bin:$HDEV/test:$PATH
+
+Edit HADOOP_SRC_ROOT in $HDEV/bin/hadoop-home.sh to point to the 
+root directory where you keep your source trees.
+
+Run the daemons, eg
+
+    nn1 - Run the namenode daemon out of the first tree
+    dn1 - " datanode
+    jt1 - " jobtracker
+    tt1 - " tasktracker
+
+
+Execute commands, eg
+
+    format-namenode 1
+
+    hadoop1 fs -put temp temp0
+
+    hadoop1 dfsadmin -safemode leave
+
+    . /home/eli/src/play/hadoop-dev/bin/hadoop-home.sh 1
+    J=$HADOOP_MAPRED_HOME/build/hadoop-mapred-examples-0.23.0-SNAPSHOT.jar
+    hadoop1 jar $J pi 2 100000
+
+

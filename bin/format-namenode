@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+. hadoop-home.sh
+CID=7
+$HADOOP_HDFS_HOME/bin/hdfs namenode -format -clusterid $CID

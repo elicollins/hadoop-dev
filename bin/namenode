@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+. hadoop-home.sh
+$HADOOP_HDFS_HOME/bin/hdfs namenode 2>&1 | tee namenode$1.log

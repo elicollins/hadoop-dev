@@ -1,0 +1,10 @@
+#!/bin/bash
+. ~/dotbash
+while (true)
+do
+    ant -Doffline=true -Dtestcase=$1 run-test-hdfs
+    if [ $? -ne 0 ]; then
+        echo "Test failed"
+        exit 1
+    fi
+done

@@ -1,0 +1,13 @@
+#!/bin/bash
+. ~/dotbash
+i=0
+while (true)
+do
+    let  "i += 1"
+    ant -Dtestcase=$1 run-test-mapred
+ 
+    if [ $? -ne 0 ]; then
+        echo "Test iteration $i failed"
+        exit 1
+    fi
+done
