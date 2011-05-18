@@ -34,8 +34,12 @@ function ant-test-patch() {
    test-patch
 }
 
-function ant-releaseaudit() {
+function ant-releaseaudit () {
   ant releaseaudit -Djava5.home=$JAVA5_HOME -Dforrest.home=$FORREST_HOME
+}
+
+function ant-docs () {
+  ant docs -Djava5.home=$JAVA5_HOME -Dforrest.home=$FORREST_HOME
 }
 
 alias ant-build-install="ant -Dresolvers=internal mvn-install"

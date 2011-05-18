@@ -35,7 +35,7 @@ Execute Hadoop commands
     hadoop1 jar $J pi 2 100000
 
 
-Execute unit test
+Execute a specific unit test
 
     ant-test-core TestFoo
     ant-test-core20 TestFoo
@@ -63,6 +63,6 @@ Subversion
 
     Merge revision r to a release branch:
 
-    svn_merge_common HADOOP-XYZ r
-    svn_merge_hdfs HDFS-XYX r
-    svn_merge_mapreduce MAPREDUCE-XYZ r
+    svn_merge_common r HADOOP-XYZ
+    svn_merge_hdfs r HDFS-XYX
+    svn_merge_mapreduce r MAPREDUCE-XYZ
