@@ -16,6 +16,9 @@ Installing the scripts
 
 Run Hadoop daemons
 
+    Copy the conf/* files into the conf directory in your common
+    tree and update per the paths on your system.
+
     nn1    Run the namenode daemon out of the first tree
     dn1    " datanode
     jt1    " jobtracker
