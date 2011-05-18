@@ -1,0 +1,54 @@
+#!/bin/bash
+
+NUM_COMMITS=4
+TEST_DIR=src/test
+
+while [ $# -gt 0 ]; do
+  case $1 in
+    -n)
+      shift
+      NUM_COMMITS=$1
+      ;;
+    *)
+      echo bad param: $1
+      exit 1
+      ;;
+  esac
+  shift
+done
+
+if grep -q test.hdfs.commit.tests.file build.xml ; then
+  TEST_TARGET=run-commit-test
+  TESTFILE_PROPERTY=test.hdfs.commit.tests.file
+elif grep -q test.mapred.commit.tests.file build.xml ; then
+  TEST_TARGET=run-commit-test
+  TESTFILE_PROPERTY=test.mapred.commit.tests.file
+elif grep -q test.all.tests.file build.xml ; then
+  TESTFILE_PROPERTY=test.all.tests.file
+  if grep -q '"run-test-core"' build.xml ; then
+    TEST_TARGET=run-test-core
+  else
+    TEST_TARGET=test-core
+  fi
+else
+  echo No idea what target/property to use
+  exit 1
+fi
+
+
+if git rev-parse --show-cdup 2> /dev/null ; then
+  (git whatchanged -n$NUM_COMMITS src/test/ ; git diff --numstat src/test ) | \
+    egrep -o '/Test.*.java' | sed 's,^,**/,g' > /tmp/recent-tests
+else
+  REV_FOR_DIFF=$(svn log -l $NUM_COMMITS src/test | egrep -o '^r[0-9]+' | tail -1)
+  (svn diff -r $REV_FOR_DIFF:HEAD --summarize ; svn stat ) | \
+    egrep -o '/Test.*.java' | sed 's,^,**/,g' > /tmp/recent-tests
+fi
+
+echo Going to run the following tests:
+cat /tmp/recent-tests
+echo ----------
+sleep 1
+
+
+ant -D${TESTFILE_PROPERTY}=/tmp/recent-tests $TEST_TARGET
