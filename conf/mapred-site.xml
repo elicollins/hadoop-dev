@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+
+<property>
+  <name>mapreduce.jobtracker.address</name>
+  <value>localhost:10021</value>
+</property>
+
+<property>
+  <name>mapreduce.jobtracker.http.address</name>
+  <value>localhost:10030</value>
+</property>
+
+<property>
+  <name>mapreduce.tasktracker.http.address</name>
+  <value>0.0.0.0:10060</value>
+</property>
+
+<property>
+  <name>mapreduce.cluster.local.dir</name>
+  <value>
+/home/eli/hadoop-dirs1/mr1,
+/home/eli/hadoop-dirs1/mr2,
+/home/eli/hadoop-dirs1/mr3
+  </value>
+</property>
+
+<property>
+  <name>mapreduce.jobtracker.system.dir</name>
+  <value>hdfs://localhost:8020/mapred/system</value>
+</property>
+
+<property>
+  <name>mapreduce.jobtracker.staging.root.dir</name>
+  <value>hdfs://localhost:8020/mapred/staging</value>
+</property>
+
+<property>
+  <name>mapreduce.cluster.temp.dir</name>
+  <value>hdfs://localhost:8020/mapred/temp</value>
+</property>
+
+</configuration>
