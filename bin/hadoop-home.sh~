@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-export HADOOP_COMMON_HOME=/home/eli/src/common$1
-export HADOOP_HDFS_HOME=/home/eli/src/hdfs$1
-export HADOOP_MAPRED_HOME=/home/eli/src/mapreduce$1

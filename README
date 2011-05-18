@@ -1,24 +1,28 @@
 
 Scripts and aliases for Hadoop development.
 
-Add something like the following to your bashrc to use them:
 
-export HDEV=/home/eli/src/play/hadoop-dev
-. $HDEV/bin/hadoop-alias.sh
-export PATH=$HDEV/bin:$HDEV/test:$PATH
+Installing the scripts
 
-Edit HADOOP_SRC_ROOT in $HDEV/bin/hadoop-home.sh to point to the 
-root directory where you keep your source trees.
+   Add something like the following to your bashrc:
 
-Run the daemons, eg
+   export HDEV=/home/eli/src/play/hadoop-dev
+   . $HDEV/bin/hadoop-alias.sh
+   export PATH=$HDEV/bin:$HDEV/test:$PATH
 
-    nn1 - Run the namenode daemon out of the first tree
-    dn1 - " datanode
-    jt1 - " jobtracker
-    tt1 - " tasktracker
+   Edit HADOOP_SRC_ROOT in $HDEV/bin/hadoop-home.sh to point to
+   the root directory where you keep your source trees.
 
 
-Execute commands, eg
+Run Hadoop daemons
+
+    nn1    Run the namenode daemon out of the first tree
+    dn1    " datanode
+    jt1    " jobtracker
+    tt1    " tasktracker
+
+
+Execute Hadoop commands
 
     format-namenode 1
 
@@ -26,8 +30,39 @@ Execute commands, eg
 
     hadoop1 dfsadmin -safemode leave
 
-    . /home/eli/src/play/hadoop-dev/bin/hadoop-home.sh 1
+    . $HDEV/bin/hadoop-home.sh 1
     J=$HADOOP_MAPRED_HOME/build/hadoop-mapred-examples-0.23.0-SNAPSHOT.jar
     hadoop1 jar $J pi 2 100000
 
 
+Execute unit test
+
+    ant-test-core TestFoo
+    ant-test-core20 TestFoo
+    ant-test-contrib20 TestFoo
+    ant-test-hdfs TestFoo
+    ant-test-mr TestFoo
+
+    The following will loop the test until it fails:
+
+    loop-core-test TestFoo
+    loop-core20-test TestFoo
+    loop-hdfs-test TestFoo
+    loop-mr-test TestFoo
+
+
+Development
+
+    Test-patch:    ant-test-patch ~/hadoop-x.patch >& ~/test.out
+    Release audit: ant-releaseaudit
+
+
+Subversion
+
+    Revert revision r:  svn_revert r
+
+    Merge revision r to a release branch:
+
+    svn_merge_common HADOOP-XYZ r
+    svn_merge_hdfs HDFS-XYX r
+    svn_merge_mapreduce MAPREDUCE-XYZ r

@@ -41,15 +41,6 @@ function ant-releaseaudit() {
 alias ant-build-install="ant -Dresolvers=internal mvn-install"
 alias ant-build-resolve="ant -Dresolvers=internal clean-cache mvn-install"
 
-#sbackport ()
-#{
-#   REPO=https://svn.apache.org/repos/asf/hadoop/$1/trunk/;
-#   VERSION=$2;
-#   PREVIOUS=$[$VERSION-1];
-#   svn merge --ignore-ancestry -r $PREVIOUS:$VERSION $REPO;
-#   echo "Merge -r $PREVIOUS:$VERSION from trunk to branch. Fixes: "
-#}
-
 # svn_merge_apache hdfs 1036213 HDFS-259
 function svn_merge_apache ()
 {
