@@ -21,9 +21,9 @@
 <property>
   <name>mapreduce.cluster.local.dir</name>
   <value>
-/home/eli/hadoop-dirs1/mr1,
-/home/eli/hadoop-dirs1/mr2,
-/home/eli/hadoop-dirs1/mr3
+/home/eli/hadoop-dirs1/mr/mr1,
+/home/eli/hadoop-dirs1/mr/mr2,
+/home/eli/hadoop-dirs1/mr/mr3
   </value>
 </property>
 

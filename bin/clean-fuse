@@ -1,0 +1,26 @@
+#!/bin/bash
+
+find src -name "*.o" -print0 | xargs -0 rm
+
+# fuse-dfs autogen source
+rm -rf src/contrib/fuse-dfs/Makefile
+rm -rf src/contrib/fuse-dfs/Makefile.in
+rm -rf src/contrib/fuse-dfs/aclocal.m4
+rm -rf src/contrib/fuse-dfs/autom4te.cache/
+rm -rf src/contrib/fuse-dfs/config.guess
+rm -rf src/contrib/fuse-dfs/config.log
+rm -rf src/contrib/fuse-dfs/config.status
+rm -rf src/contrib/fuse-dfs/config.sub
+rm -rf src/contrib/fuse-dfs/configure
+rm -rf src/contrib/fuse-dfs/depcomp
+rm -rf src/contrib/fuse-dfs/install-sh
+rm -rf src/contrib/fuse-dfs/missing
+rm -rf src/contrib/fuse-dfs/src/.deps/
+rm -rf src/contrib/fuse-dfs/src/Makefile
+rm -rf src/contrib/fuse-dfs/src/Makefile.in
+rm -rf src/contrib/fuse-dfs/src/fuse_dfs
+
+# build files
+rm -rf build/contrib/fuse-dfs
+
+echo Done

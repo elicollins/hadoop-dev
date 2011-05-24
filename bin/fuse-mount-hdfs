@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+. hadoop-home.sh
+shift
+
+URI=dfs://localhost:9000
+
+export LIBHDFS_OPTS="-Xms64m -Xmx128m"
+export PATH=$HADOOP_HDFS_HOME/build/contrib/fuse-dfs:$PATH
+sudo umount /mnt/hdfs
+# Use -d to run in the foreground
+bash fuse_dfs_wrapper.sh $URI /mnt/hdfs -d

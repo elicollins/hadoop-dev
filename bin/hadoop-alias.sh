@@ -44,6 +44,9 @@ function ant-docs () {
 
 alias ant-build-install="ant -Dresolvers=internal mvn-install"
 alias ant-build-resolve="ant -Dresolvers=internal clean-cache mvn-install"
+alias ant-compile-libhdfs="ant -Dcompile.c++=true -Dlibhdfs=true compile"
+alias ant-compile-fusedfs="ant -Dlibhdfs=1 -Dfusedfs=1 compile-contrib"
+alias ant-test-fusedfs="ant -Dlibhdfs=1 -Dfusedfs=1 test-contrib"
 
 # svn_merge_apache hdfs 1036213 HDFS-259
 function svn_merge_apache ()
