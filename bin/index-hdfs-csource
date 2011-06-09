@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+D1=src/c++/libhdfs
+D2=src/contrib/fuse-dfs/src
+# Add $D2 below to include fuse-dfs
+find $D1 -iname '*.[chsSly]' >> cscope.files
+cscope -kqb
