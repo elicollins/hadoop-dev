@@ -47,6 +47,8 @@ alias ant-build-resolve="ant -Dresolvers=internal clean-cache mvn-install"
 alias ant-compile-libhdfs="ant -Dcompile.c++=true -Dlibhdfs=true compile"
 alias ant-compile-fusedfs="ant -Dlibhdfs=1 -Dfusedfs=1 compile-contrib"
 alias ant-test-fusedfs="ant -Dlibhdfs=1 -Dfusedfs=1 test-contrib"
+# If the above tests fails you'll need to unmount the build mount:
+#   fusermount -u build/contrib/fuse-dfs/test/mnt
 
 # svn_merge_apache hdfs 1036213 HDFS-259
 function svn_merge_apache ()

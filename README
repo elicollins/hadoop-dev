@@ -1,8 +1,7 @@
 
 Scripts and aliases for Hadoop development.
 
-
-Installing the scripts
+INSTALL
 
    Add something like the following to your bashrc:
 
@@ -14,7 +13,12 @@ Installing the scripts
    the root directory where you keep your source trees.
 
 
-Run Hadoop daemons
+RUNNING DAEMONS
+
+    The scripts allow you to use multiple source trees (eg src/hdfs1,
+    src/hdf2, etc). To run the namenode daemon out of src/hdfs1 you
+    use "nn1", to run src/hdfs2 use "nn2", and so on. To use more
+    trees you can add more aliases to hadoop-alias.sh.
 
     Copy the conf/* files into the conf directory in your common
     tree and update per the paths on your system.
@@ -25,7 +29,7 @@ Run Hadoop daemons
     tt1    " tasktracker
 
 
-Execute Hadoop commands
+RUNNING COMMANDS
 
     format-namenode 1
 
@@ -38,34 +42,43 @@ Execute Hadoop commands
     hadoop1 jar $J pi 2 100000
 
 
-Execute a specific unit test
+TESTING
 
-    ant-test-core TestFoo
-    ant-test-core20 TestFoo
-    ant-test-contrib20 TestFoo
-    ant-test-hdfs TestFoo
-    ant-test-mr TestFoo
+    To run a specific test class (TestFoo):
 
-    The following will loop the test until it fails:
+      ant-test-core TestFoo
+      ant-test-core20 TestFoo
+      ant-test-contrib20 TestFoo
+      ant-test-hdfs TestFoo
+      ant-test-mr TestFoo
 
-    loop-core-test TestFoo
-    loop-core20-test TestFoo
-    loop-hdfs-test TestFoo
-    loop-mr-test TestFoo
+    To loop a specific test until it fails:
 
-
-Development
-
-    Test-patch:    ant-test-patch ~/hadoop-x.patch >& ~/test.out
-    Release audit: ant-releaseaudit
+      loop-core-test TestFoo
+      loop-core20-test TestFoo
+      loop-hdfs-test TestFoo
+      loop-mr-test TestFoo
 
 
-Subversion
+DEVELOPMENT
 
-    Revert revision r:  svn_revert r
+    Test-patch:
+
+      ant-test-patch ~/hadoop-x.patch >& ~/test.out
+
+    Release audit:
+
+      ant-releaseaudit
+
+
+SUBVERSION
+
+    Revert revision r, eg:
+
+      svn_revert 1035718
 
     Merge revision r to a release branch:
 
-    svn_merge_common r HADOOP-XYZ
-    svn_merge_hdfs r HDFS-XYX
-    svn_merge_mapreduce r MAPREDUCE-XYZ
+      svn_merge_common r HADOOP-XYZ
+      svn_merge_hdfs r HDFS-XYX
+      svn_merge_mapreduce r MAPREDUCE-XYZ
