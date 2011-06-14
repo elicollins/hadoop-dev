@@ -1,20 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-find src -name "*.o" -print0 | xargs -0 rm
+find src -name "*.o" -print0 | xargs -0 rm 2&>/dev/null
 
 # libdhdfs autogen source
-rm src/c++/libhdfs/configure
-rm src/c++/libhdfs/Makefile.in
-rm src/c++/libhdfs/aclocal.m4
-rm src/c++/libhdfs/m4/libtool.m4
-rm src/c++/libhdfs/m4/ltoptions.m4
-rm src/c++/libhdfs/m4/ltsugar.m4
-rm src/c++/libhdfs/m4/ltversion.m4
-rm src/c++/libhdfs/m4/lt~obsolete.m4
-rm -rf src/c++/libhdfs/autom4te.cache/
-rm -rf src/c++/libhdfs/config/
+rm src/c++/libhdfs/configure \
+   src/c++/libhdfs/Makefile.in \
+   src/c++/libhdfs/aclocal.m4 \
+   src/c++/libhdfs/m4/libtool.m4 \
+   src/c++/libhdfs/m4/ltoptions.m4 \
+   src/c++/libhdfs/m4/ltsugar.m4 \
+   src/c++/libhdfs/m4/ltversion.m4 \
+   src/c++/libhdfs/m4/lt~obsolete.m4 2&>/dev/null
+rm -rf src/c++/libhdfs/autom4te.cache \
+       src/c++/libhdfs/config 2&>/dev/null
 
 # build files
-rm -rf build/c++
+rm -rf build/c++ 2&>/dev/null
 
 echo Done

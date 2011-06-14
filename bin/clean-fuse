@@ -1,26 +1,26 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-find src -name "*.o" -print0 | xargs -0 rm
+find src -name "*.o" -print0 | xargs -0 rm 2&>/dev/null
 
 # fuse-dfs autogen source
-rm -rf src/contrib/fuse-dfs/Makefile
-rm -rf src/contrib/fuse-dfs/Makefile.in
-rm -rf src/contrib/fuse-dfs/aclocal.m4
-rm -rf src/contrib/fuse-dfs/autom4te.cache/
-rm -rf src/contrib/fuse-dfs/config.guess
-rm -rf src/contrib/fuse-dfs/config.log
-rm -rf src/contrib/fuse-dfs/config.status
-rm -rf src/contrib/fuse-dfs/config.sub
-rm -rf src/contrib/fuse-dfs/configure
-rm -rf src/contrib/fuse-dfs/depcomp
-rm -rf src/contrib/fuse-dfs/install-sh
-rm -rf src/contrib/fuse-dfs/missing
-rm -rf src/contrib/fuse-dfs/src/.deps/
-rm -rf src/contrib/fuse-dfs/src/Makefile
-rm -rf src/contrib/fuse-dfs/src/Makefile.in
-rm -rf src/contrib/fuse-dfs/src/fuse_dfs
+rm -rf src/contrib/fuse-dfs/Makefile \
+       src/contrib/fuse-dfs/Makefile.in \
+       src/contrib/fuse-dfs/aclocal.m4 \
+       src/contrib/fuse-dfs/autom4te.cache \
+       src/contrib/fuse-dfs/config.guess \
+       src/contrib/fuse-dfs/config.log \
+       src/contrib/fuse-dfs/config.status \
+       src/contrib/fuse-dfs/config.sub \
+       src/contrib/fuse-dfs/configure \
+       src/contrib/fuse-dfs/depcomp \
+       src/contrib/fuse-dfs/install-sh \
+       src/contrib/fuse-dfs/missing \
+       src/contrib/fuse-dfs/src/.deps/ \
+       src/contrib/fuse-dfs/src/Makefile \
+       src/contrib/fuse-dfs/src/Makefile.in \
+       src/contrib/fuse-dfs/src/fuse_dfs 2&>/dev/null
 
 # build files
-rm -rf build/contrib/fuse-dfs
+rm -rf build/contrib/fuse-dfs 2&>/dev/null
 
 echo Done

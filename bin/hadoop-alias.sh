@@ -42,6 +42,10 @@ function ant-docs () {
   ant docs -Djava5.home=$JAVA5_HOME -Dforrest.home=$FORREST_HOME
 }
 
+function ant-tar () {
+  ant tar -Djava5.home=$JAVA5_HOME -Dforrest.home=$FORREST_HOME
+}
+
 alias ant-build-install="ant -Dresolvers=internal mvn-install"
 alias ant-build-resolve="ant -Dresolvers=internal clean-cache mvn-install"
 alias ant-compile-libhdfs="ant -Dcompile.c++=true -Dlibhdfs=true compile"

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+find src -name "*.o" -print0 | xargs -0 rm 2&>/dev/null
+
+rm -rf src/native/m4 2&>/dev/null
+rm src/native/configure \
+   src/native/Makefile.in \
+   src/native/config.h.in \
+   src/native/INSTALL \
+   src/native/aclocal.m4 \
+   src/native/config/depcomp \
+   src/native/config/missing \
+   src/native/config/config.guess \
+   src/native/config/config.sub \
+   src/native/config/ltmain.sh \
+   src/native/config/install-sh 2&>/dev/null
+
+echo Done
