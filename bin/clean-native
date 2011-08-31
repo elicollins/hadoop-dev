@@ -2,17 +2,38 @@
 
 find src -name "*.o" -print0 | xargs -0 rm 2&>/dev/null
 
-rm -rf src/native/m4 2&>/dev/null
-rm src/native/configure \
+rm -rf src/native/m4 \
+   src/c++/pipes/config \
+   src/c++/utils/config 2&>/dev/null
+
+rm -rf src/c++/pipes/Makefile.in \
+   src/c++/pipes/aclocal.m4 \
+   src/c++/pipes/configure \
+   src/c++/pipes/impl/config.h.in \
+   src/c++/utils/Makefile.in \
+   src/c++/utils/aclocal.m4 \
+   src/c++/utils/configure \
+   src/c++/utils/impl/config.h.in \
+   src/native/lib/Makefile.in \
+   src/native/src/org/apache/hadoop/io/compress/snappy/Makefile.in \
+   src/native/src/org/apache/hadoop/io/compress/zlib/Makefile.in \
+   src/native/configure \
    src/native/Makefile.in \
    src/native/config.h.in \
    src/native/INSTALL \
    src/native/aclocal.m4 \
    src/native/config/depcomp \
    src/native/config/missing \
-   src/native/config/config.guess \
    src/native/config/config.sub \
    src/native/config/ltmain.sh \
-   src/native/config/install-sh 2&>/dev/null
+   src/native/config/install-sh \
+   src/native/INSTALL \
+   src/native/Makefile.in \ 
+   src/native/aclocal.m4 \
+   src/native/config \
+   src/native/config.h.in \
+   src/native/configure 2&>/dev/null
+
+#   src/native/config/config.guess \
 
 echo Done

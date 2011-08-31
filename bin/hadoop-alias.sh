@@ -19,7 +19,9 @@ alias hadoop2="hadoop 2"
 alias hadoop3="hadoop 3"
 
 function ant-test-core20 { ant -Dtestcase=$1 test-core; }
-function ant-test-contrib20 { ant -Dtestcase=$1 test-contrib; }
+function ant-test-contrib20 { 
+  ant -Dtestcase=$1 -Dlibhdfs=1 -Dfusedfs=1 test-contrib;
+}
 function ant-test-mr { ant -Dtestcase=$1 run-test-mapred; }
 function ant-test-hdfs { ant -Dtestcase=$1 run-test-hdfs; }
 function ant-test-core { ant -Dtestcase=$1 run-test-core; }
@@ -44,6 +46,10 @@ function ant-docs () {
 
 function ant-tar () {
   ant tar -Djava5.home=$JAVA5_HOME -Dforrest.home=$FORREST_HOME
+}
+
+function mvn-tar () {
+  mvn package -Pdist -Dtar -DskipTests
 }
 
 alias ant-build-install="ant -Dresolvers=internal mvn-install"
