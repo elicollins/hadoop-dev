@@ -49,6 +49,12 @@ function ant-tar () {
   ant tar -Djava5.home=$JAVA5_HOME -Dforrest.home=$FORREST_HOME
 }
 
+function ant-findbugs () {
+  ant findbugs -Djava5.home=$JAVA5_HOME \
+               -Dforrest.home=$FORREST_HOME \
+               -Dfindbugs.home=$FINDBUGS_HOME
+}
+
 function mvn-tar () {
   mvn package -Pdist -Dtar -DskipTests
 }
