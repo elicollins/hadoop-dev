@@ -19,6 +19,10 @@ alias hadoop2="hadoop 2"
 alias hadoop3="hadoop 3"
 
 function mvn-test { mvn -Dtest=$1 test; }
+function mvn-tar { 
+  mvn package -Pdist -Dtar -DskipTests -Dmaven.javadoc.skip=true;
+}
+
 function ant-test-core20 { ant -Dtestcase=$1 test-core; }
 function ant-test-contrib20 { 
   ant -Dtestcase=$1 -Dlibhdfs=1 -Dfusedfs=1 test-contrib;
@@ -53,10 +57,6 @@ function ant-findbugs () {
   ant findbugs -Djava5.home=$JAVA5_HOME \
                -Dforrest.home=$FORREST_HOME \
                -Dfindbugs.home=$FINDBUGS_HOME
-}
-
-function mvn-tar () {
-  mvn package -Pdist -Dtar -DskipTests
 }
 
 alias ant-build-install="ant -Dresolvers=internal mvn-install"
