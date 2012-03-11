@@ -19,6 +19,12 @@ alias hadoop2="hadoop 2"
 alias hadoop3="hadoop 3"
 
 function mvn-test { mvn -Dtest=$1 test; }
+
+function mvn-inst {
+  mvn test -DskipTests;
+  mvn install -P-cbuild -DskipTests
+}
+
 function mvn-tar { 
   mvn package -Pdist -Dtar -DskipTests -Dmaven.javadoc.skip=true;
 }
