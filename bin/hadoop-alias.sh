@@ -73,13 +73,17 @@ alias ant-test-fusedfs="ant -Dlibhdfs=1 -Dfusedfs=1 test-contrib"
 # If the above tests fails you'll need to unmount the build mount:
 #   fusermount -u build/contrib/fuse-dfs/test/mnt
 
-# svn_merge_apache hdfs 1036213 HDFS-259
+# Usage: svn_merge_apache hdfs 1036213 HDFS-259
+# NB: we assume the change does not cross projects and
+# only modifies files within its "project" directory.
 function svn_merge_apache ()
 {
   BRANCH=$1
   REV=$2
   JIRA=$3
-  svn merge -c $REV https://svn.apache.org/repos/asf/hadoop/$BRANCH/trunk
+  TRUNK=https://svn.apache.org/repos/asf/hadoop/common/trunk
+  DIR=$TRUNK/hadoop-$BRANCH-project 
+  svn merge -c $REV $DIR hadoop-$BRANCH-project
   echo "$JIRA. svn merge -c $REV from trunk"
 }
 
