@@ -19,14 +19,16 @@ alias hadoop2="hadoop 2"
 alias hadoop3="hadoop 3"
 
 function mvn-test { mvn -Dtest=$1 test; }
-
-function mvn-inst {
-  mvn test -DskipTests;
-  mvn install -P-cbuild -DskipTests
-}
+function mvn-compile-test { mvn -DskipTests clean test; }
+function mvn-inst { mvn test -DskipTests install -P-cbuild; }
 
 function mvn-tar { 
   mvn package -Pdist -Dtar -DskipTests -Dmaven.javadoc.skip=true;
+}
+
+function mvn-tar-native {
+  mvn package -Pdist -Dtar -DskipTests -Dmaven.javadoc.skip=true; \
+      -Pnative -Pfuse -DskipTest
 }
 
 function ant-test-core20 { ant -Dtestcase=$1 test-core; }
@@ -90,6 +92,15 @@ function svn_merge_apache ()
 function svn_merge_common { svn_merge_apache common $1 $2; } 
 function svn_merge_hdfs { svn_merge_apache hdfs $1 $2; } 
 function svn_merge_mapreduce { svn_merge_apache mapreduce $1 $2; } 
+
+function svn_merge_branch1 ()
+{
+  REV=$1
+  JIRA=$2
+  BRANCH=https://svn.apache.org/repos/asf/hadoop/common/branches/branch-1
+  svn merge -c $REV $BRANCH .
+  echo "$JIRA. svn merge -c $REV from branch-1"
+}
 
 # svn_revert 1035718
 function svn_revert ()
