@@ -82,24 +82,22 @@ function svn_merge_apache ()
 {
   BRANCH=$1
   REV=$2
-  JIRA=$3
   TRUNK=https://svn.apache.org/repos/asf/hadoop/common/trunk
   DIR=$TRUNK/hadoop-$BRANCH-project 
   svn merge -c $REV $DIR hadoop-$BRANCH-project
-  echo "$JIRA. svn merge -c $REV from trunk"
+  echo "svn merge -c $REV from trunk"
 }
 
-function svn_merge_common { svn_merge_apache common $1 $2; } 
-function svn_merge_hdfs { svn_merge_apache hdfs $1 $2; } 
-function svn_merge_mapreduce { svn_merge_apache mapreduce $1 $2; } 
+function svn_merge_common { svn_merge_apache common $1 } 
+function svn_merge_hdfs { svn_merge_apache hdfs $1 } 
+function svn_merge_mapreduce { svn_merge_apache mapreduce $1 } 
 
 function svn_merge_branch1 ()
 {
-  REV=$1
-  JIRA=$2
   BRANCH=https://svn.apache.org/repos/asf/hadoop/common/branches/branch-1
+  REV=$1
   svn merge -c $REV $BRANCH .
-  echo "$JIRA. svn merge -c $REV from branch-1"
+  echo "svn merge -c $REV from branch-1"
 }
 
 # svn_revert 1035718
