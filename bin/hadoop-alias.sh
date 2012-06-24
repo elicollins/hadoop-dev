@@ -1,23 +1,3 @@
-alias nn1="namenode 1"
-alias nn2="namenode 2"
-alias nn3="namenode 3"
-
-alias dn1="datanode 1"
-alias dn2="datanode 2"
-alias dn3="datanode 3"
-
-alias jt1="jobtracker 1"
-alias jt2="jobtracker 2"
-alias jt3="jobtracker 3"
-
-alias tt1="tasktracker 1"
-alias tt2="tasktracker 2"
-alias tt3="tasktracker 3"
-
-alias hadoop1="hadoop 1"
-alias hadoop2="hadoop 2"
-alias hadoop3="hadoop 3"
-
 function mvn-test { mvn -Dtest=$1 test; }
 function mvn-compile-test { mvn -DskipTests clean test; }
 function mvn-inst { mvn test -DskipTests install -P-cbuild; }
@@ -85,7 +65,6 @@ function svn_merge_apache ()
   TRUNK=https://svn.apache.org/repos/asf/hadoop/common/trunk
   DIR=$TRUNK/hadoop-$BRANCH-project 
   svn merge -c $REV $DIR hadoop-$BRANCH-project
-  echo "svn merge -c $REV from trunk"
 }
 
 function svn_merge_common { svn_merge_apache common $1 } 
@@ -97,7 +76,6 @@ function svn_merge_branch1 ()
   BRANCH=https://svn.apache.org/repos/asf/hadoop/common/branches/branch-1
   REV=$1
   svn merge -c $REV $BRANCH .
-  echo "svn merge -c $REV from branch-1"
 }
 
 # svn_revert 1035718
