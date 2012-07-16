@@ -7,8 +7,7 @@ function mvn-tar {
 }
 
 function mvn-tar-native {
-  mvn package -Pdist -Dtar -DskipTests -Dmaven.javadoc.skip=true; \
-      -Pnative -Pfuse -DskipTest
+  mvn package -Pdist -Pnative -Dtar -DskipTests -DskipTest -Dmaven.javadoc.skip=true;
 }
 
 function ant-test-core20 { ant -Dtestcase=$1 test-core; }
