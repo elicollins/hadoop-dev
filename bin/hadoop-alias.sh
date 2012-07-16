@@ -66,9 +66,9 @@ function svn_merge_apache ()
   svn merge -c $REV $DIR hadoop-$BRANCH-project
 }
 
-function svn_merge_common { svn_merge_apache common $1 } 
-function svn_merge_hdfs { svn_merge_apache hdfs $1 } 
-function svn_merge_mapreduce { svn_merge_apache mapreduce $1 } 
+function svn_merge_common { svn_merge_apache common $1; } 
+function svn_merge_hdfs { svn_merge_apache hdfs $1; } 
+function svn_merge_mapreduce { svn_merge_apache mapreduce $1; } 
 
 function svn_merge_branch1 ()
 {
