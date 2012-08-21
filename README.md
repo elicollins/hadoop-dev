@@ -1,9 +1,12 @@
+hadoop-dev
+==========
 
 Scripts and aliases for Hadoop development.
 
 INSTALL
+-------
 
-   Add something like the following to your bashrc:
+   Add something like the following to your bashrc
 
    export HDEV=/home/eli/src/play/hadoop-dev
    . $HDEV/bin/hadoop-alias.sh
@@ -14,6 +17,7 @@ INSTALL
 
 
 RUNNING DAEMONS
+---------------
 
     The scripts allow you to use multiple source trees (eg src/hdfs1,
     src/hdf2, etc). To run the namenode daemon out of src/hdfs1 you
@@ -30,6 +34,7 @@ RUNNING DAEMONS
 
 
 RUNNING COMMANDS
+----------------
 
     format-namenode 1
 
@@ -43,8 +48,9 @@ RUNNING COMMANDS
 
 
 TESTING
+-------
 
-    To run a specific test class (TestFoo):
+    To run a specific test class (TestFoo)
 
       ant-test-core TestFoo
       ant-test-core20 TestFoo
@@ -52,7 +58,7 @@ TESTING
       ant-test-hdfs TestFoo
       ant-test-mr TestFoo
 
-    To loop a specific test until it fails:
+    To loop a specific test until it fails
 
       loop-core-test TestFoo
       loop-core20-test TestFoo
@@ -61,23 +67,25 @@ TESTING
 
 
 DEVELOPMENT
+-----------
 
-    Test-patch:
+    Run "test-patch" on a patch
 
       ant-test-patch ~/hadoop-x.patch >& ~/test.out
 
-    Release audit:
+    Release audit
 
       ant-releaseaudit
 
 
 SUBVERSION
+----------
 
-    Revert revision r, eg:
+    Revert revision r, eg
 
       svn_revert 1035718
 
-    Merge revision r to a release branch:
+    Merge revision r to a release branch
 
       svn_merge_common r HADOOP-XYZ
       svn_merge_hdfs r HDFS-XYX
