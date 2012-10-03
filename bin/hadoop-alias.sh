@@ -3,11 +3,15 @@ function mvn-compile-test { mvn -DskipTests clean test; }
 function mvn-inst { mvn test -DskipTests install -P-cbuild; }
 
 function mvn-tar { 
-  mvn package -Pdist -Dtar -DskipTests -Dmaven.javadoc.skip=true;
+  mvn package -Pdist -Dtar -DskipTests -DskipTest -Dmaven.javadoc.skip=true;
 }
 
 function mvn-tar-native {
   mvn package -Pdist -Pnative -Dtar -DskipTests -DskipTest -Dmaven.javadoc.skip=true;
+}
+
+function mvn-tar-native-snappy {
+  mvn package -Pdist -Pnative -Dtar -DskipTests -DskipTest -Dmaven.javadoc.skip=true -Dbundle.snappy=true -Dsnappy.prefix=/home/eli/src/toolchain/snappy-1.0.5 -Dsnappy.lib=/home/eli/src/toolchain/snappy-1.0.5;
 }
 
 function ant-test-core20 { ant -Dtestcase=$1 test-core; }
@@ -36,8 +40,12 @@ function ant-docs () {
   ant docs -Djava5.home=$JAVA5_HOME -Dforrest.home=$FORREST_HOME
 }
 
-function ant-tar () {
+function ant-tar (){
   ant tar -Djava5.home=$JAVA5_HOME -Dforrest.home=$FORREST_HOME
+}
+
+function ant-tar-native (){
+  ant tar -Dcompile.c++=yes -Dcompile-c++-examples -Dcompile.native=true -Djava5.home=$JAVA5_HOME -Dforrest.home=$FORREST_HOME
 }
 
 function ant-findbugs () {
